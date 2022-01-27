@@ -21,10 +21,18 @@ const message = new Vue({
             this.currentIndex = index        
         },
         previousImg() {
-            this.currentIndex--
+            if(this.currentIndex === 0){
+                this.currentIndex = this.images.length - 1;
+            } else {
+                this.currentIndex--;
+            }
         },
         nextImg() {
-            this.currentIndex++
+            if(this.currentIndex === this.images.length - 1){
+                this.currentIndex = 0;
+            } else {
+                this.currentIndex++;
+            }
         },
         isActive(index) {
             if(this.currentIndex === index)
