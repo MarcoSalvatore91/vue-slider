@@ -17,11 +17,18 @@ const message = new Vue({
     // #Function
 
     methods: {
+        selectPage(index) {
+            this.currentIndex = index        
+        },
         previousImg() {
             this.currentIndex--
         },
         nextImg() {
             this.currentIndex++
+        },
+        isActive(index) {
+            if(this.currentIndex === index)
+            return true
         },
     }
 });
