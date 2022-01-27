@@ -21,18 +21,18 @@
     <div class="container vh-100">
       <div class="row">
         <div class="col-3 d-flex align-items-center justify-content-center">
-          <i class="fas fa-angle-left fa-4x" @click='previousImg()'></i>
+          <i class="fas fa-angle-left fa-4x" @click='previousImg()' @mouseenter='stopAutoPlay' @mouseleave='startAutoPlay'></i>
         </div>
         <div class="col-6">
           <div class="slider d-flex align-items-center">
             <img v-if="(currentIndex === index)" v-for="(image, index) in images" :src="image" class="img-fluid" :alt="`${images[0]}`" />
-            <div class="slider-dots">
-              <div v-for="(image, index) in images" @click='selectPage(index)' class="dot mx-2" :class="isActive(index) ? 'active' : ''" ></div>
+            <div class="slider-dots" @mouseenter='stopAutoPlay' @mouseleave='startAutoPlay'>
+              <div v-for="(image, index) in images" @click='selectPage(index)' class="dot mx-2" :class="isActive(index) ? 'active' : ''"></div>
             </div>
           </div>
         </div>
         <div class="col-3 d-flex align-items-center justify-content-center">
-          <i class="fas fa-angle-right fa-4x" @click='nextImg'></i>
+          <i class="fas fa-angle-right fa-4x" @click='nextImg' @mouseenter='stopAutoPlay' @mouseleave='startAutoPlay'></i>
         </div>
       </div>
     </div>

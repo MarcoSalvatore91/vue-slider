@@ -6,6 +6,8 @@ const message = new Vue({
     el: '#root',
 
     data: {
+
+        autoPlay: undefined,
         currentIndex: 0,
         images: [
         'images/image1.jpg',
@@ -17,9 +19,11 @@ const message = new Vue({
     // #Function
 
     methods: {
+
         selectPage(index) {
             this.currentIndex = index        
         },
+
         previousImg() {
             if(this.currentIndex === 0){
                 this.currentIndex = this.images.length - 1;
@@ -27,6 +31,7 @@ const message = new Vue({
                 this.currentIndex--;
             }
         },
+
         nextImg() {
             if(this.currentIndex === this.images.length - 1){
                 this.currentIndex = 0;
@@ -34,9 +39,22 @@ const message = new Vue({
                 this.currentIndex++;
             }
         },
+
         isActive(index) {
             if(this.currentIndex === index)
             return true
         },
+
+        startAutoPlay() {
+            this.autoPlay = setInterval(this.nextImg, 3000)
+        },
+
+        stopAutoPlay() {
+            clearInterval(this.autoPlay)
+        }
+    },
+
+    created() {
+        this.startAutoPlay();
     }
 });
